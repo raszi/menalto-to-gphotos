@@ -6,7 +6,7 @@ dir=$1
 IFS='
 '
 
-for file in $(find ${dir} -type f)
+for file in $(find "${dir}" -type f)
 do
     relative_path=$(realpath --relative-to="${dir}" "${file}")
     top_level_dir=$(echo "${relative_path}" | cut -d"/" -f1)
@@ -56,7 +56,8 @@ do
             continue;
     esac
 
-    rest=$(dirname $(echo ${relative_path} | cut -d"/" -f2-) | perl -pe 's@/@-@g')
+    remaining_path=$(echo "${relative_path}" | cut -d"/" -f2-)
+    rest=$(dirname "${remaining_path}" | perl -pe 's@/@-@g')
 
     if [[ "${rest}" == "." ]]
     then
@@ -68,7 +69,7 @@ do
     filename=$(basename "${relative_path}")
     new_file="${base_dir}/${filename}"
 
-    ext=$(echo ${filename##*.} | tr '[:upper:]' '[:lower:]')
+    ext=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')
 
     if [[ "${ext}" == "jpg" ]];
     then
@@ -81,6 +82,8 @@ do
         fi
     fi
 
-    mkdir -p $(dirname "${new_file}")
+    dir=$(dirname "${new_file}")
+
+    mkdir -p "${dir}"
     mv "${file}" "${new_file}"
 done
