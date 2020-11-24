@@ -16,44 +16,44 @@ do
 
     case "${orig_month}" in
         01 | jan*)
-            month="01";
+            month="01"
             ;;
         02 | feb*)
-            month="02";
+            month="02"
             ;;
         03 | mar*)
-            month="03";
+            month="03"
             ;;
         04 | apr*)
-            month="04";
+            month="04"
             ;;
         05 | may*)
-            month="05";
+            month="05"
             ;;
         06 | jun*)
-            month="06";
+            month="06"
             ;;
         07 | jul*)
-            month="07";
+            month="07"
             ;;
         08 | aug*)
-            month="08";
+            month="08"
             ;;
         09 | sept*)
-            month="09";
+            month="09"
             ;;
         10 | oct*)
-            month="10";
+            month="10"
             ;;
         11 | nov*)
-            month="11";
+            month="11"
             ;;
         12 | dec*)
-            month="12";
+            month="12"
             ;;
         *)
             echo "Invalid month ${year}/'${orig_month}' at '${top_level_dir}'" >&2
-            continue;
+            continue
     esac
 
     remaining_path=$(echo "${relative_path}" | cut -d"/" -f2-)
